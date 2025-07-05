@@ -29,6 +29,13 @@ actor BackgroundWorker {
         // ❌ This results in an error in Swift 6:
         // Call to main actor-isolated initializer 'init(claims:)' in a synchronous actor-isolated context; this is an error in the Swift 6 language mode.
         let jsonWebToken = JsonWebToken(claims: Claims(sub: UUID()))
+        
+        // This is OK.
+        print("Account ID:: \(jsonWebToken.accountIdentifier1)")
+
+        // ❌ This results in an error in Swift 6:
+        // Main actor-isolated property 'accountIdentifier' can not be referenced on a nonisolated actor instance; this is an error in the Swift 6 language mode.
+        print("Account ID:: \(jsonWebToken.accountIdentifier2)")
     }
     
     func test2(session: Session) {
