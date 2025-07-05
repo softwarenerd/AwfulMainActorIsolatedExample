@@ -8,13 +8,13 @@ struct JsonWebToken: Codable {
     let claims: Claims
     let accountIdentifier1: UUID
     
-    // ❗Swift 6 erroneously thinks this is main-actor isolated!!!
+    // ❗Swift 6 erroneously thinks this is main actor-isolated!!!
     init(claims: Claims) {
         self.claims = claims
         self.accountIdentifier1 = claims.sub
     }
 
-    // ❗Swift 6 erroneously thinks this is main-actor isolated!!!
+    // ❗Swift 6 erroneously thinks this is main actor-isolated!!!
     var accountIdentifier2: UUID {
         return claims.sub
     }
